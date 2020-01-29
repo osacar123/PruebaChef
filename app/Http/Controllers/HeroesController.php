@@ -15,7 +15,7 @@ class HeroesController extends Controller
      */
     public function index()
     {
-        return Heroes::paginate(15);
+        return Heroes::paginate(9);
     }
 
     /**
