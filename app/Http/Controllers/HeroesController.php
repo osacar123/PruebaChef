@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Heroes;
+
 class HeroesController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class HeroesController extends Controller
      */
     public function index()
     {
-        //
+        return Heroes::paginate(15);
     }
 
     /**
@@ -46,6 +48,7 @@ class HeroesController extends Controller
     public function show($id)
     {
         //
+        return Heroes::where('id', $id)->get();
     }
 
     /**
@@ -56,7 +59,7 @@ class HeroesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Heroes::where('id', $id)->get();
     }
 
     /**
