@@ -17,7 +17,7 @@ class HeroesController extends Controller
      */
     public function index()
     {
-        return DB::table('heroes')->select('name','id', 'publisher', 'picture')->simplePaginate(9);;
+        return DB::table('heroes')->select('name','id', 'publisher', 'picture')->Paginate(9);;
         //return Heroes::where('votes', '>', 1);
     }
 
