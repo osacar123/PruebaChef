@@ -19,6 +19,7 @@ class CreateTableHeroes extends Migration
             $table->string('picture');
             $table->string('publisher');
             $table->string('info');
+            $table->bigInteger('votes');
             $table->timestamps();
         });
     }

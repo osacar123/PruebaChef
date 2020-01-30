@@ -19,7 +19,8 @@ class HeroesTableSeeder extends Seeder
                 'name' => $obj->name,
                 'picture' => $obj->picture,
                 'publisher' => $obj->publisher,
-                'info' => $obj->info
+                'info' => $obj->info,
+                'votes' => $obj->votes
             ]);
         }
         

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Heroes;
 
+use Illuminate\Support\Facades\DB;
+
 class HeroesController extends Controller
 {
     /**
@@ -15,7 +17,8 @@ class HeroesController extends Controller
      */
     public function index()
     {
-        return Heroes::paginate(9);
+        return DB::table('heroes')->select('name','id', 'publisher', 'picture')->simplePaginate(9);;
+        //return Heroes::where('votes', '>', 1);
     }
 
     /**
@@ -59,7 +62,7 @@ class HeroesController extends Controller
      */
     public function edit($id)
     {
-        return Heroes::where('id', $id)->get();
+        
     }
 
     /**
@@ -72,6 +75,12 @@ class HeroesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $hero = Heroes::find($id);
+        $hero->votes = $request->get('vote');
+        $hero->save(); 
+        return $hero;
+
+        
     }
 
     /**
@@ -83,5 +92,10 @@ class HeroesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function ranking()
+    {
+        return DB::table('heroes')->orderBy('votes', 'desc')->limit(10)->get();
     }
 }
