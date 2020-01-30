@@ -76,7 +76,9 @@ class HeroesController extends Controller
     {
         //
         $hero = Heroes::find($id);
-        $hero->votes = $request->get('vote');
+        //$hero->votes = $request->get('vote');
+       
+        $hero->votes = $request->input('vote');
         $hero->save(); 
         return $hero;
 
